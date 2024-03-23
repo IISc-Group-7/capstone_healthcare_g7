@@ -1,0 +1,81 @@
+# Package Overview
+package_name: stroke_detection_model
+
+# # Data Files
+training_data_file: healthcare-dataset-stroke-data.csv
+
+# # Variables
+# # The variable we are attempting to predict (stroke)
+target: stroke
+
+pipeline_name: stroke_detection_model
+pipeline_save_file: stroke_detection_model_output_v
+
+# # Features that will go inside processing pipeline
+features:
+  - gender
+  - age
+  - hypertension
+  - heart_disease
+  - ever_married
+  - work_type
+  - Residence_type
+  - avg_glucose_level
+  - bmi
+  - smoking_status
+
+unused_fields:  # Features to drop before pipeline
+  - id
+
+# # Features inside processing pipeline
+# bmiimputer_var: bmi 
+
+# # Features names
+
+gender_var: gender
+gender_mappings: 
+  Male: 0
+  Female: 1
+  Other: 2
+
+age_var: age
+hypertension_var: hypertension
+heart_disease_var: heart_disease
+
+ever_married_var: ever_married
+ever_married_mappings:
+  Yes: 1
+  No: 0
+
+work_type_var: work_type
+work_type_mappings:
+  Private: 0
+  Self-employed: 1
+  Govt_job: 2
+  children: 3
+  Never_worked: 4
+
+Residence_type_var: Residence_type
+Residence_type_mappings:
+  Urban: 0
+  Rural: 1
+
+avg_glucose_level_var: avg_glucose_level
+bmi_var: bmi
+
+smoking_status_var: smoking_status
+smoking_status_mappings:
+  formerly smoked: 0
+  never smoked: 1
+  smokes: 2
+  Unknown: 3
+  
+# Set train/test split
+test_size: 0.20
+
+# Set the random seed
+random_state: 42
+
+# Alogrithm parameters
+n_estimators: 100
+max_depth: 5
